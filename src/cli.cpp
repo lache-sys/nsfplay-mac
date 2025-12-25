@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include "nsfplay.hpp"
-#include "SDL.h"
+#include <SDL.h>
 
 #define SAMPLING_RATE 44100
 #define SAMPLING_CH 1

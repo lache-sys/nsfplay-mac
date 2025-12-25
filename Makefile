@@ -1,11 +1,11 @@
 CFLAGS = -O2
-CFLAGS += -I/usr/include/SDL2
-CFLAGS += -I/usr/local/include/SDL2
+CFLAGS += -I/opt/homebrew/include/SDL2
+CFLAGS += -I/opt/homebrew/include/SDL2
 CFLAGS += -I/opt/X11/include
 CFLAGS += -DNDEBUG
 CPPFLAGS = --std=c++11 ${CFLAGS}
 CPP = g++ ${CPPFLAGS}
-CC = gcc ${CFLAGS}
+CC = gcc ${CFLAGS} -framework SDL2
 OBJECTS = nsf.o
 OBJECTS += rconv.o
 OBJECTS += nes_cpu.o
@@ -83,3 +83,5 @@ nes_vrc6.o: ./src/xgm/devices/Sound/nes_vrc6.cpp
 
 rom_tndtable.o: ./src/xgm/devices/Sound/rom_tndtable.c
 	${CC} -c $<
+LDFLAGS  :=$(shell sdl2-config --libs)
+CXXFLAGS :=$(shell sdl2-config --cflags)
